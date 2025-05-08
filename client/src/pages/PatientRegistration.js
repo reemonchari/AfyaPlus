@@ -11,7 +11,7 @@ function PatientRegistration() {
     password: "",
   });
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(""); // State for success message
+  const [success, setSuccess] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,10 +28,10 @@ function PatientRegistration() {
     });
 
     if (response.ok) {
-      setSuccess("Registration successful! Redirecting to services..."); // Show success message
+      setSuccess("Registration successful! Redirecting to services...");
       setTimeout(() => {
-        navigate("/services"); // Redirect to services after 2 seconds
-      }, 2000);
+        navigate("/services");
+      });
     } else {
       setError("Error registering patient. Please try again.");
     }
@@ -44,7 +44,7 @@ function PatientRegistration() {
     >
       <div className="hero-text">
         <h1 className="hero-title">Patient Registration</h1>
-        {success && <p className="success-message">{success}</p>} {/* Display success message */}
+        {success && <p className="success-message">{success}</p>}
         <form onSubmit={handleSubmit} className="form-container" autoComplete="off">
           <input
             type="text"

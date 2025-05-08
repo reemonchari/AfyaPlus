@@ -7,7 +7,7 @@ function Login() {
   const [userType] = useState("patient");
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState(""); // State for success message
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,13 +29,13 @@ function Login() {
       const user = await response.json();
       localStorage.setItem("user", JSON.stringify({ ...user, userType }));
 
-      // Set success message and redirect after a short delay
+
       setSuccessMessage("Login successful! Redirecting...");
       setTimeout(() => {
         if (userType === "patient") {
           navigate("/services");
         }
-      }, 2000); // Redirect after 2 seconds
+      });
     } else {
       setError("Login failed. Check credentials.");
     }
@@ -72,7 +72,7 @@ function Login() {
           </button>
         </form>
         {error && <p className="error-message">{error}</p>}
-        {successMessage && <p className="success-message">{successMessage}</p>} {/* Show success message */}
+        {successMessage && <p className="success-message">{successMessage}</p>}
       </div>
     </div>
   );

@@ -18,10 +18,8 @@ function EditAppointment() {
       const response = await fetch(`http://localhost:5000/appointments/${id}`);
       const data = await response.json();
       
-      // Extract date and time from ISO string
       const [date, timeWithMs] = data.appointment_time.split("T");
-      const time = timeWithMs?.slice(0, 5); // Keep only HH:MM
-
+      const time = timeWithMs?.slice(0, 5);
       setAppointment({
         appointment_date: date,
         appointment_time: time,
@@ -29,7 +27,6 @@ function EditAppointment() {
         provider_id: data.provider.id,
       });
 
-      // Fetch providers who offer the same service as the appointment
       fetchProviders(data.service.id);
     };
 

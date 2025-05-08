@@ -5,6 +5,7 @@ body {
   background-position: center;
   margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
 
 /* Navbar Styling */
@@ -12,9 +13,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #6f42c1;
+  background-color: #872bae;
   color: white;
-  padding: 15px 30px;
+  padding: 0px 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -54,8 +55,9 @@ body {
   text-align: center;
   padding: 0 20px;
   position: relative;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-attachment: fixed;
 }
 
 .hero-container::after {
@@ -87,8 +89,8 @@ body {
 }
 
 .hero-title {
-  font-size: 2rem;
-  color: #6f42c1;
+  font-size: 2.5rem;
+  color: #872bae;
   margin-bottom: 10px;
 }
 
@@ -98,17 +100,31 @@ body {
   margin-bottom: 30px;
 }
 
+.hero-btn {
+  padding: 10px 20px;
+  background-color: #872bae;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hero-btn:hover {
+  background-color: #6c2391;
+}
+
 .hero-btn.danger {
-  background-color: #dc3545;
+  background-color: #b9375d;
   color: white;
 }
+
 .quote {
   margin: 1rem 0;
   font-style: italic;
   color: #444;
 }
 
-/* Forms */
+/* Form Styles */
 form {
   display: flex;
   flex-direction: column;
@@ -124,11 +140,11 @@ input, select {
   width: 100%;
 }
 
-/* Buttons */
+/* General Buttons */
 button {
   padding: 12px 24px;
   font-size: 1.2rem;
-  background-color: #6f42c1;
+  background-color: #872bae;
   color: white;
   border: none;
   border-radius: 8px;
@@ -138,11 +154,7 @@ button {
 }
 
 button:hover {
-  background-color: #5a34a1;
-}
-
-.home-buttons button {
-  width: auto;
+  background-color: #6c2391;
 }
 
 .home-buttons {
@@ -154,18 +166,37 @@ button:hover {
   margin-top: 1.5rem;
 }
 
+.home-buttons button {
+  width: auto;
+}
+
+/* Utility & Feedback */
 .error {
-  color: red;
+  color: #b9375d;
   font-size: 0.9rem;
   margin-top: 10px;
 }
 
-/* Service page styles */
+.success-message {
+  color: #28a745;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.error-message {
+  color: #b9375d;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Service Page Styles */
 .service-page-container {
   min-height: 100vh;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
-  background-attachment: scroll;
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -184,13 +215,6 @@ button:hover {
   margin-top: 20px;
 }
 
-.hero-title {
-  font-size: 2.5em;
-  text-align: center;
-  color: #333;
-  margin-bottom: 30px;
-}
-
 .services-list {
   display: flex;
   flex-direction: column;
@@ -206,25 +230,12 @@ button:hover {
 
 .service-item h2 {
   font-size: 1.8em;
-  color: #007bff;
+  color: #872bae;
 }
 
 .service-item p {
   color: #555;
   margin: 10px 0;
-}
-
-button.hero-btn {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button.hero-btn:hover {
-  background-color: #0056b3;
 }
 
 ul {
@@ -237,7 +248,7 @@ ul li {
   margin: 5px 0;
 }
 
-/* Appointment Styles */
+/* Appointment */
 .appointment-list {
   display: flex;
   flex-direction: column;
@@ -245,10 +256,22 @@ ul li {
 }
 
 .appointment-card {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   padding: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.appointment-form label {
+  font-weight: bold;
 }
 
 .button-group {
@@ -258,39 +281,97 @@ ul li {
   flex-wrap: wrap;
 }
 
-.appointment-form {
+/* Profile Pages */
+.profile-container {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.profile-content {
+  width: 100%;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.profile-heading {
+  font-size: 2rem;
+  color: #872bae;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile-item {
+  margin-bottom: 10px;
+  color: #444;
+  font-size: 1.1rem;
+}
+
+.profile-buttons {
+  display: flex;
+  justify-content: center;
   gap: 1rem;
-  max-width: 400px;
+  margin-top: 20px;
+}
+
+.profile-buttons .hero-btn {
+  width: auto;
+}
+
+/* Edit Form */
+.edit-form {
+  max-width: 600px;
   margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.appointment-form label {
+.edit-form label {
   font-weight: bold;
-  margin-bottom: 0.2rem;
+  margin-bottom: 8px;
+  display: block;
 }
 
-.appointment-form input,
-.appointment-form select {
-  padding: 0.5rem;
+.edit-form input,
+.edit-form select {
+  width: 100%;
+  padding: 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
+  margin-bottom: 20px;
 }
 
+.edit-form .hero-btn {
+  margin-top: 10px;
+}
 
-.success-message {
-  color: green;
-  font-weight: bold;
-  margin-top: 1rem;
+/* Utility Classes */
+.center-text {
   text-align: center;
 }
 
-.error-message {
-  color: red;
-  font-weight: bold;
+.mt-1 {
   margin-top: 1rem;
-  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.text-danger {
+  color: #b9375d;
 }
 
 /* Responsive Design */
@@ -311,5 +392,16 @@ ul li {
 
   .home-buttons {
     flex-direction: column;
+  }
+
+  .edit-form,
+  .profile-content,
+  .appointment-form,
+  .service-page-content {
+    padding: 20px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
   }
 }
