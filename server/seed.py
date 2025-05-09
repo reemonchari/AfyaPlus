@@ -1,6 +1,8 @@
 from app import app
 from models import db, Service, Provider
 from werkzeug.security import generate_password_hash
+import random
+
 
 with app.app_context():
     print("Seeding data...")
@@ -99,6 +101,12 @@ with app.app_context():
         ],
     }
 
+    locations = [
+    "Nairobi", "Mombasa", "Kisumu", "Eldoret", "Nakuru", 
+    "Thika", "Meru", "Kakamega", "Kericho", "Nyeri", 
+    "Machakos", "Embu", "Kitale", "Narok", "Naivasha"
+    ]
+
     providers = []
     for service_name, provider_list in provider_map.items():
         service = Service.query.filter_by(name=service_name).first()
@@ -109,7 +117,7 @@ with app.app_context():
                     name=name,
                     email=email,
                     specialty=service_name,
-                    location="Nairobi",
+                    location=random.choice(locations),
                     password_hash=generate_password_hash("password123")
                 )
                 db.session.add(provider)

@@ -21,10 +21,7 @@ db.init_app(app)
 migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
 
-# ================================
-#         AUTHENTICATION
-# ================================
-
+# AUTHENTICATION Routes
 @app.route("/login/patient", methods=["POST"])
 def login_patient():
     data = request.get_json()
@@ -51,10 +48,7 @@ def login_provider():
         return jsonify({"message": "Login successful", "token": token, "id": provider.id, "user_type": "provider"}), 200
     return jsonify({"message": "Invalid credentials"}), 401
 
-# ================================
-#            PATIENTS
-# ================================
-
+# PATIENT Routes
 @app.route("/patients", methods=["POST"])
 def register_patient():
     data = request.get_json()
@@ -94,42 +88,32 @@ def update_patient(id):
 @app.route("/patients/<int:id>", methods=["DELETE"])
 def delete_patient(id):
     patient = Patient.query.get_or_404(id)
+    Appointment.query.filter_by(patient_id=id).delete()
     db.session.delete(patient)
     db.session.commit()
     return jsonify({"message": "Patient deleted successfully"}), 200
 
-# ================================
-#           PROVIDERS
-# ================================
-
+# PROVIDER Routes
 @app.route("/providers/by-service/<int:service_id>", methods=["GET"])
 def get_providers_by_service(service_id):
-    # Fetch providers who offer the selected service
     providers = Provider.query.filter(Provider.services.any(Service.id == service_id)).all()
     
-    # Return the filtered list of providers
     return jsonify([provider.to_dict() for provider in providers])
 
-# ================================
-#          APPOINTMENTS
-# ================================
+# APPOINTMENT Routes
 @app.route("/appointments", methods=["POST"])
 def create_appointment():
     data = request.get_json()
 
-    # Ensure all required fields are included
     if not all(key in data for key in ['provider_id', 'patient_id', 'service_id', 'appointment_time']):
         return jsonify({"error": "Missing required fields"}), 400
 
     try:
-        # Convert UTC ISO string to datetime object
         utc_time = datetime.fromisoformat(data['appointment_time'].replace('Z', '+00:00'))
 
-        # Convert to Africa/Nairobi local time
         local_tz = pytz.timezone("Africa/Nairobi")
         local_time = utc_time.astimezone(local_tz)
 
-        # Remove tzinfo to make it "naive" for database storage
         appointment_dt = local_time.replace(tzinfo=None)
 
         new_appointment = Appointment(
@@ -137,7 +121,7 @@ def create_appointment():
             patient_id=data['patient_id'],
             service_id=data['service_id'],
             appointment_time=appointment_dt,
-            status="Scheduled"  # Set status explicitly
+            status="Scheduled"
         )
         db.session.add(new_appointment)
         db.session.commit()
@@ -167,9 +151,8 @@ from datetime import datetime
 @app.route('/appointments/<int:id>', methods=['PUT'])
 def update_appointment(id):
     data = request.get_json()
-    appointment_time_str = data['appointment_time']  # e.g., '2025-05-09T10:00'
+    appointment_time_str = data['appointment_time'] 
     
-    # Convert the appointment time to a datetime object
     try:
         appointment_time = datetime.strptime(appointment_time_str, '%Y-%m-%dT%H:%M')
     except ValueError:
@@ -179,7 +162,6 @@ def update_appointment(id):
     if not appointment:
         return jsonify({"error": "Appointment not found"}), 404
 
-    # Update appointment fields
     appointment.appointment_time = appointment_time
     appointment.status = data['status']
     appointment.provider_id = data['provider_id']
@@ -198,10 +180,8 @@ def delete_appointment(id):
     db.session.commit()
     return jsonify({"message": "Appointment deleted successfully"}), 200
 
-# ================================
-#            SERVICES
-# ================================
 
+# SERVICE Routes
 @app.route("/services", methods=["GET"])
 def get_services():
     services = Service.query.all()
@@ -224,9 +204,6 @@ def add_service_to_provider(provider_id):
         db.session.commit()
     return jsonify(provider.to_dict()), 200
 
-# ================================
-#             MAIN
-# ================================
 
 if __name__ == "__main__":
     app.run(debug=True)

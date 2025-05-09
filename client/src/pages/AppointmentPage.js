@@ -70,7 +70,7 @@ function AppointmentPage() {
       setTimeout(() => {
         setSuccessMessage("");
         navigate(`/my-appointments/${patient.id}`);
-      }, 2000);
+      });
     } else {
       const error = await response.json();
       console.error("Error booking appointment:", error);
