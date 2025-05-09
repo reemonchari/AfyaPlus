@@ -17,6 +17,7 @@ afia-plus/
 │       │   ├── Navbar.js
 │       │   ├── Login.js
 │       │   ├── LogoutButton.js
+│       ├── pages/
 │       │   ├── HomePage.js
 │       │   ├── AppointmentPage.js
 │       │   ├── EditAppointment.js
