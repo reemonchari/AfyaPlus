@@ -1,13 +1,13 @@
 ```markdown
-# Afia Plus
+# Afya Plus
 
-Afia Plus is a full-stack healthcare access platform built with Flask (Python) for the backend and React for the frontend. It enables patients to register, book appointments with providers offering specific services, and manage their healthcare journey seamlessly.
+Afya Plus is a full-stack healthcare access platform built with Flask (Python) for the backend and React for the frontend. It enables patients to register, book appointments with providers offering specific services, and manage their healthcare journey seamlessly.
 
 ---
 
 ## 📁 Project Structure
 
-```
+```bash
 afia-plus/
 │
 ├── client/                 # React frontend
@@ -18,14 +18,10 @@ afia-plus/
 │       │   ├── Navbar.js
 │       │   ├── Login.js
 │       │   ├── LogoutButton.js
-│       │   ├── Signup.js
 │       │   ├── HomePage.js
 │       │   ├── AppointmentPage.js
 │       │   ├── EditAppointment.js
 │       │   ├── ServicePage.js
-│       │   ├── ProviderRegistration.js
-│       │   ├── ProviderProfile.js
-│       │   ├── EditProvider.js
 │       │   ├── PatientRegistration.js
 │       │   ├── PatientProfile.js
 │       │   ├── EditPatient.js
@@ -46,8 +42,6 @@ afia-plus/
         ├── service.py
         └── user.py
 ```
-
----
 
 ## ⚙️ Tech Stack
 
@@ -82,7 +76,6 @@ afia-plus/
 - Secure route redirection and user-based data handling
 
 ---
-
 ## 🚀 Getting Started
 
 ### Backend Setup
