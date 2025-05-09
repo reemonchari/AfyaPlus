@@ -7,7 +7,7 @@ Afya Plus is a full-stack healthcare access platform built with Flask (Python) f
 ## 📁 Project Structure
 
 ```bash
-afia-plus/
+AfyaPlus/
 │
 ├── client/                 # React frontend
 │   ├── public/
