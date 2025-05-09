@@ -60,7 +60,7 @@ afia-plus/
 
 ## ✨ Features
 
-- Patient and Provider registration & login
+- Patient registration & login
 - Conditional navigation based on user type
 - Patients can:
   - View services
@@ -68,7 +68,6 @@ afia-plus/
   - Book appointments
   - Edit or delete their appointments
 - Providers can:
-  - Manage their profile
   - Offer multiple services
 - Many-to-many relationship between Providers and Services
 - Appointment edit and status update
