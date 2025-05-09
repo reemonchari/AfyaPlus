@@ -281,6 +281,27 @@ ul li {
   flex-wrap: wrap;
 }
 
+.appointment-select {
+  background-color: #872bae;
+  color: white;
+}
+
+.react-calendar__tile--active {
+  background-color: #872bae !important;
+  color: white !important;
+}
+
+
+.appointment-select option {
+  background-color: #872bae;
+  color: white;
+}
+
+.react-calendar__navigation button {
+  background-color: #872bae !important;
+  color: white !important;
+}
+
 /* Profile Pages */
 .profile-container {
   min-height: 100vh;
@@ -373,6 +394,7 @@ ul li {
 .text-danger {
   color: #b9375d;
 }
+
 
 /* Responsive Design */
 @media (max-width: 600px) {
