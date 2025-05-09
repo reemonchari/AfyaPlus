@@ -1,4 +1,3 @@
-```markdown
 # Afya Plus
 
 Afya Plus is a full-stack healthcare access platform built with Flask (Python) for the backend and React for the frontend. It enables patients to register, book appointments with providers offering specific services, and manage their healthcare journey seamlessly.
