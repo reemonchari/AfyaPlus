@@ -21,6 +21,11 @@ db.init_app(app)
 migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
 
+# Home Route
+@app.route('/')
+def home():
+    return jsonify({"message": "Welcome to Afya Plus!"})
+
 # AUTHENTICATION Routes
 @app.route("/login/patient", methods=["POST"])
 def login_patient():
@@ -99,6 +104,15 @@ def get_providers_by_service(service_id):
     providers = Provider.query.filter(Provider.services.any(Service.id == service_id)).all()
     
     return jsonify([provider.to_dict() for provider in providers])
+
+@app.route("/providers/<int:id>", methods=["DELETE"])
+def delete_provider(id):
+    provider = Provider.query.get_or_404(id)
+    Appointment.query.filter_by(provider_id=id).delete()
+    db.session.delete(provider)
+    db.session.commit()
+    return jsonify({"message": "Provider deleted successfully"}), 200
+
 
 # APPOINTMENT Routes
 @app.route("/appointments", methods=["POST"])
